@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/infoTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="url:......\nfilePath:........"/>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infoTv"/>
+
+    <TextView
+        android:id="@+id/priorityTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pb"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/statusTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pb"
+        android:layout_toRightOf="@id/priorityTv"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/speedTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priorityTv"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"/>
+
+    <ImageButton
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_play"
+        android:layout_toRightOf="@id/statusTv"
+        android:layout_below="@id/pb"
+        android:background="@null"
+        android:paddingLeft="30px"/>
+
+    <ImageButton
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_pause"
+        android:layout_toRightOf="@id/start"
+        android:layout_below="@id/pb"
+        android:background="@null"
+        android:paddingLeft="30px"/>
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_del"
+        android:layout_toRightOf="@id/stop"
+        android:layout_below="@id/pb"
+        android:background="@null"
+        android:paddingLeft="30px"/>
+
+</RelativeLayout>
