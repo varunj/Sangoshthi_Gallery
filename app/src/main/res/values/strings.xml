@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">zzSangoshthi_Gallery</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_activity_detail">DetailActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Sangoshthi_Gallery/</string>
+    <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Sangoshthi_Gallery/logs/access.txt/</string>
+    <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Sangoshthi_Gallery/logs/log_</string>
+
+    <string name="register_minLen_name">1</string>
+    <string name="register_len_phoneNum">10</string>
+
+    <string name="toast_wrong_name">Enter Name</string>
+    <string name="toast_wrong_phoneNum">Enter Your 10 Digit Phone Number</string>
+    <string name="toast_access_file">Check Dropbox Access File</string>
+
+    <string name="topics_gallery_home_title">Topics List</string>
+    <string name="topics_actvity_title">Media List</string>
+    <string name="placeholder_tv_file_name">file_name.mp4</string>
+    <string name="topics_actvity_item_title">Media Name</string>
 </resources>
