@@ -105,25 +105,38 @@ public class SyncHome extends AppCompatActivity {
 
         // build what all available at server
         ArrayList<String> resourceServerlist = new ArrayList<String>();
-        resourceServerlist.add("demo_video_0_watermark.mp4");
-        resourceServerlist.add("demo_video_3_watermark.mp4");
+        resourceServerlist.add("https://varunj.github.io/airgestar_img/demo_video_0_watermark.mp4");
+        resourceServerlist.add("https://varunj.github.io/airgestar_img/demo_video_3_watermark.mp4");
+        resourceServerlist.add("ftp://10.0.0.2:3721/a.mp4");
+        resourceServerlist.add("ftp://192.168.164.169:3721/a.mp4");
 
         // build what all locally cached
+        ArrayList<String> toRemove = new ArrayList<String>();
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Download" + File.separator;
         File directory = new File(path);
         File[] files = directory.listFiles();
         for (int i = 0; i < files.length; i++) {
-            resourceServerlist.remove(files[i].getName());
+            for (String toDownload : resourceServerlist) {
+                if (toDownload.toLowerCase().contains(files[i].getName().toLowerCase())) {
+                    toRemove.add(toDownload);
+                }
+            }
+        }
+
+        for (String eachRemove : toRemove) {
+            resourceServerlist.remove(eachRemove);
         }
 
         // build what to download
         for (String eachResource : resourceServerlist) {
+            String[] bits = eachResource.split("/");
             taskList.add(
-                    new Task( "https://varunj.github.io/airgestar_img/" + eachResource,
-                            Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Download" + File.separator + eachResource,
+                    new Task(eachResource,
+                            Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Download" + File.separator + bits[bits.length-1],
                             listener, errorListener)
             );
         }
+
 
         return taskList;
     }
