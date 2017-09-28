@@ -3,10 +3,12 @@ package io.gihub.varunj.sangoshthi_gallery.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class MediaListActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private TextView topics_actvity_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,10 @@ public class MediaListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         topicName = intent.getStringExtra("topicName");
         Log.d("System.out", "xxx: selec topic: " + topicName);
+
+        // set title
+        topics_actvity_title = (TextView) findViewById(R.id.topics_actvity_title);
+        topics_actvity_title.setText(topicName.toUpperCase());
 
         // fetch list of media related to topic
         resourceList.clear();

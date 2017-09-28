@@ -2,14 +2,25 @@ package io.gihub.varunj.sangoshthi_gallery.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import io.gihub.varunj.sangoshthi_gallery.Activities.MediaListActivity;
 import io.gihub.varunj.sangoshthi_gallery.R;
@@ -29,10 +40,12 @@ public class TopicsListAdapter extends RecyclerView.Adapter<TopicsListAdapter.Vi
         // each data item is just a string in this case
         public TextView tv_topics;
         public CardView cv_topics;
+        ImageView iv_topics;
         public ViewHolder(View itemView) {
             super(itemView);
             cv_topics = (CardView) itemView.findViewById(R.id.cv_topics);
             tv_topics = (TextView) itemView.findViewById(R.id.tv_topics);
+            iv_topics = (ImageView) itemView.findViewById(R.id.iv_topics);
         }
     }
 
@@ -55,9 +68,17 @@ public class TopicsListAdapter extends RecyclerView.Adapter<TopicsListAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+
+        // set topic name
         holder.tv_topics.setText(mDataset.get(position));
 
-        holder.tv_topics.setOnClickListener(new View.OnClickListener() {
+        // set topic icon
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + context.getResources().getString(R.string.dropbox_icons_path) + mDataset.get(position) + "_icon.png/");
+        if (file.exists()) {
+            holder.iv_topics.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
+        }
+
+        holder.cv_topics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MediaListActivity.class);

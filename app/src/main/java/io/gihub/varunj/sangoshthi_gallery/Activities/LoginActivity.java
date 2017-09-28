@@ -3,9 +3,11 @@ package io.gihub.varunj.sangoshthi_gallery.Activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.BoringLayout;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +18,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 import io.gihub.varunj.sangoshthi_gallery.R;
 
@@ -42,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             findViewById(R.id.sign_in_button).setOnClickListener(this);
             editTextName = (EditText)findViewById(R.id.name);
             editTextPhone = (EditText)findViewById(R.id.phone);
+
             // Configure sign-in to request the user's ID, email address, and basic profile. ID and basic profile are included in DEFAULT_SIGN_IN.
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestEmail()
@@ -62,8 +70,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+
+        // fetch list of phone numbers authorised to access
+        String pathAccessFile = Environment.getExternalStorageDirectory().getAbsolutePath() +  getString(R.string.dropbox_access_path);
+        int flag = 0;
+        File directoryAccess = new File(pathAccessFile);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(directoryAccess));
+            String line;
+            String[] splitt;
+            while ((line = br.readLine()) != null) {
+                splitt = line.split(",");
+                if (splitt[0].equals(editTextPhone.getText().toString())) {
+                    flag = 1;
+                    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+                    startActivityForResult(signInIntent, RC_SIGN_IN);
+                }
+            }
+            br.close();
+        }
+        catch (IOException e) {
+            Toast.makeText(LoginActivity.this, getString(R.string.toast_unauth_phoneNum), Toast.LENGTH_LONG).show();
+        }
+        if (flag == 0) {
+            Toast.makeText(LoginActivity.this, getString(R.string.toast_unauth_phoneNum), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

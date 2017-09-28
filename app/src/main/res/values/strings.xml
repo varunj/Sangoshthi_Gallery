@@ -4,15 +4,18 @@
     <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Sangoshthi_Gallery/</string>
     <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Sangoshthi_Gallery/logs/access.txt/</string>
     <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Sangoshthi_Gallery/logs/log_</string>
+    <string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Sangoshthi_Gallery/logs/log_</string>
 
     <string name="register_minLen_name">1</string>
     <string name="register_len_phoneNum">10</string>
 
     <string name="toast_wrong_name">Enter Name</string>
     <string name="toast_wrong_phoneNum">Enter Your 10 Digit Phone Number</string>
+    <string name="toast_unauth_phoneNum">Phone Number not Authorised</string>
     <string name="toast_access_file">Check Dropbox Access File</string>
 
-    <string name="topics_gallery_home_title">Topics List</string>
+    <string name="splash_screen">Sangoshthi: Spreading Awareness</string>
+    <string name="topics_gallery_home_title">Sangoshthi Gallery</string>
     <string name="topics_actvity_title">Media List</string>
     <string name="placeholder_tv_file_name">file_name.mp4</string>
     <string name="topics_actvity_item_title">Media Name</string>

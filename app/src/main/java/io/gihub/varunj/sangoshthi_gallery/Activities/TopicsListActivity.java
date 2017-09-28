@@ -1,5 +1,6 @@
 package io.gihub.varunj.sangoshthi_gallery.Activities;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,6 +20,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -30,6 +32,7 @@ public class TopicsListActivity extends AppCompatActivity {
     private static String userName, userPhoneNum, userEmail, userLogPath;
     private Boolean userLoggedIn;
     private ArrayList<String> topicsList = new ArrayList<>();
+    private static ArrayList<String> logsToDropbox = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -47,6 +50,9 @@ public class TopicsListActivity extends AppCompatActivity {
         userEmail = pref.getString("googleEmail", "defaultEmail");
         userLogPath = Environment.getExternalStorageDirectory().getAbsolutePath() +  getString(R.string.dropbox_logs_path) + userPhoneNum + ".txt/";
         Log.d("System.out", "xxx: user creden: " + userName + "   " + userPhoneNum + "   " + userEmail + "   " + userLoggedIn);
+
+        // log
+        TopicsListActivity.addToLog("app_open", "");
 
         // fetch list of topics authorised to access
         topicsList.clear();
@@ -82,13 +88,32 @@ public class TopicsListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        TopicsListActivity.addToLog("app_close", "");
+        transferToDropbox();
+        logsToDropbox.clear();
+        super.onBackPressed();
+    }
+
     public static void addToLog(String action, String fileName) {
+        if (fileName.length() > 0) {
+            String[] splitt = fileName.split("/");
+            fileName = splitt[splitt.length - 2] + "/" + splitt[splitt.length - 1];
+        }
+        logsToDropbox.add(new SimpleDateFormat("dd/MM/yyyy kk:mm:ss").format(new Date()) + "," + fileName + "," + action + "\n");
+        Log.d("System.out", "xxx: logs length: " + logsToDropbox.size());
+    }
+
+    public static void transferToDropbox() {
         File file = new File(userLogPath);
         if (file.exists()) {
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(file, true);
                 OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream);
-                writer.append(DateFormat.getDateTimeInstance().format(new Date()) + "," + fileName + "," + action + "\n");
+                for (String x : logsToDropbox) {
+                    writer.append(x);
+                }
                 writer.close();
                 fileOutputStream.close();
             } catch (FileNotFoundException e) {

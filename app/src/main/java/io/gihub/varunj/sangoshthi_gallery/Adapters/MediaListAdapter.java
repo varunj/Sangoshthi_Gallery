@@ -50,21 +50,22 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MediaListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_media_list_row, parent, false);
-        return new MediaListAdapter.ViewHolder(v);
+        return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MediaListAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
 
         // set text
         String[] splitt = mDataset.get(position).split("/");
-        holder.tv_media.setText(splitt[splitt.length-1]);
+        String temp = splitt[splitt.length-1];
+        holder.tv_media.setText(temp.substring(0, temp.length()-4));
 
         // set media icon
         if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp4"))
@@ -75,7 +76,7 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
             holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_image));
 
         // set click listener
-        holder.tv_media.setOnClickListener(new View.OnClickListener() {
+        holder.cv_media.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp4")) {

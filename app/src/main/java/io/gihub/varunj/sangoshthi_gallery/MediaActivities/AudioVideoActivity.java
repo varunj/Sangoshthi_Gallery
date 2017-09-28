@@ -11,10 +11,12 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.Resource;
 import com.google.android.exoplayer.ExoPlayer;
 import com.google.android.exoplayer.MediaCodecAudioTrackRenderer;
 import com.google.android.exoplayer.MediaCodecSelector;
@@ -69,6 +71,8 @@ public class AudioVideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audiovideo);
 
+        btnPlay = (ImageButton) findViewById(R.id.btnPlay);
+
         // Video Player Stuff
         setContentView(R.layout.activity_audiovideo);
         surfaceView = (SurfaceView) findViewById(R.id.sv_player);
@@ -85,19 +89,9 @@ public class AudioVideoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Closing Activity")
-                .setMessage("Sure you don't want to continue?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        TopicsListActivity.addToLog("close", pathh);
-                        exoPlayer.stop();
-                        finish();
-                    }
-                })
-                .setNegativeButton("No", null)
-                .show();
+        TopicsListActivity.addToLog("close", pathh);
+        exoPlayer.stop();
+        finish();
     }
 
     private void initMediaControls() {
@@ -170,11 +164,13 @@ public class AudioVideoActivity extends AppCompatActivity {
                 if(bIsPlaying){
                     exoPlayer.setPlayWhenReady(false);
                     bIsPlaying=false;
+                    btnPlay.setImageResource(android.R.drawable.ic_media_play);
                     TopicsListActivity.addToLog("pause:" + exoPlayer.getCurrentPosition(), pathh);
                 }
                 else {
                     exoPlayer.setPlayWhenReady(true);
                     bIsPlaying=true;
+                    btnPlay.setImageResource(android.R.drawable.ic_media_pause);
                     setProgress();
                     TopicsListActivity.addToLog("play:" + exoPlayer.getCurrentPosition(), pathh);
                 }
