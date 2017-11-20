@@ -2,9 +2,11 @@ package io.gihub.varunj.sangoshthi_gallery.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import io.gihub.varunj.sangoshthi_gallery.MediaActivities.ImageActivity;
 import io.gihub.varunj.sangoshthi_gallery.MediaActivities.AudioVideoActivity;
+import io.gihub.varunj.sangoshthi_gallery.MediaActivities.SurveyActivity;
 import io.gihub.varunj.sangoshthi_gallery.R;
 
 /**
@@ -64,7 +71,8 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
 
         // set text
         String[] splitt = mDataset.get(position).split("/");
-        String temp = splitt[splitt.length-1];
+        final String temp = splitt[splitt.length-1];
+        final String temp_topic = splitt[splitt.length-2];
         holder.tv_media.setText(temp.substring(0, temp.length()-4));
 
         // set media icon
@@ -80,20 +88,39 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
             @Override
             public void onClick(View view) {
                 if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp4")) {
+
+                    // store list of read things
+                    wrtieFileOnInternalStorage(context, temp_topic, temp);
+
                     Intent intent = new Intent(context, AudioVideoActivity.class);
                     intent.putExtra("videoPath", mDataset.get(position));
                     context.startActivity(intent);
                 }
 
                 if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp3")) {
+
+                    // store list of read things
+                    wrtieFileOnInternalStorage(context, temp_topic, temp);
+
                     Intent intent = new Intent(context, AudioVideoActivity.class);
                     intent.putExtra("videoPath", mDataset.get(position));
                     context.startActivity(intent);
                 }
 
                 if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("png")) {
+
+                    // store list of read things
+                    wrtieFileOnInternalStorage(context, temp_topic, temp);
+
                     Intent intent = new Intent(context, ImageActivity.class);
                     intent.putExtra("imagePath", mDataset.get(position));
+                    context.startActivity(intent);
+                }
+
+                if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("txt")) {
+
+                    Intent intent = new Intent(context, SurveyActivity.class);
+                    intent.putExtra("topicName", temp_topic);
                     context.startActivity(intent);
                 }
 
@@ -106,4 +133,24 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
     public int getItemCount() {
         return mDataset.size();
     }
+
+    public void wrtieFileOnInternalStorage(Context mcoContext, String folder_name, String file_name){
+        File file = new File(mcoContext.getFilesDir(), folder_name);
+        if(!file.exists()){
+            file.mkdir();
+        }
+        File mypath= new File(file, file_name);
+
+        try{
+            FileOutputStream fileOutputStream = new FileOutputStream(mypath,true);
+            OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream);
+            writer.append("opened");
+            writer.close();
+            fileOutputStream.close();
+            Log.d("System.out", "xxx: added to watched_file: " + folder_name + ", " + file_name);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

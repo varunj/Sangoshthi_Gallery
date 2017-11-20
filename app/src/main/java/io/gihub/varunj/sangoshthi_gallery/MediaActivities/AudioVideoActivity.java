@@ -1,7 +1,9 @@
 package io.gihub.varunj.sangoshthi_gallery.MediaActivities;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.media.MediaCodec;
 import android.net.Uri;
 import android.os.Bundle;

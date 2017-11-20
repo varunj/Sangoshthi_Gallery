@@ -32,7 +32,7 @@ public class TopicsListActivity extends AppCompatActivity {
     private static String userName, userPhoneNum, userEmail, userLogPath;
     private Boolean userLoggedIn;
     private ArrayList<String> topicsList = new ArrayList<>();
-    private static ArrayList<String> logsToDropbox = new ArrayList<>();
+    public static ArrayList<String> logsToDropbox = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;

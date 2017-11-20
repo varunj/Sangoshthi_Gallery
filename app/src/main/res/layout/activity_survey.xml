@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate the Overall Content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dsb_min="1"
+        app:dsb_max="10"
+        app:dsb_value="10"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate the Quality of Information"
+        android:layout_below="@+id/seekBar1"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dsb_min="1"
+        app:dsb_max="10"
+        app:dsb_value="10"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate the Difficulty of Content"
+        android:layout_below="@+id/seekBar2"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/seekBar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dsb_min="1"
+        app:dsb_max="10"
+        app:dsb_value="10"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate the Coherence of Content"
+        android:layout_below="@+id/seekBar3"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/seekBar4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dsb_min="1"
+        app:dsb_max="10"
+        app:dsb_value="10"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textViewBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Press Back To Submit"
+        android:textStyle="italic"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="32dp" />
+
+</RelativeLayout>

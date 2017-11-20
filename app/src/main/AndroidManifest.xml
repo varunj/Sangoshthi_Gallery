@@ -23,6 +23,7 @@
         <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.MediaListActivity" android:screenOrientation="portrait"/>
         <activity android:name="io.gihub.varunj.sangoshthi_gallery.MediaActivities.AudioVideoActivity" android:screenOrientation="landscape"/>
         <activity android:name="io.gihub.varunj.sangoshthi_gallery.MediaActivities.ImageActivity"/>
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.MediaActivities.SurveyActivity"/>
     </application>
 
 </manifest>

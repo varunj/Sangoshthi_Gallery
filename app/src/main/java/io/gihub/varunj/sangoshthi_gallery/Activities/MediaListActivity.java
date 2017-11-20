@@ -1,5 +1,6 @@
 package io.gihub.varunj.sangoshthi_gallery.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -34,7 +37,28 @@ public class MediaListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_list);
+        callFromResumeandCreate();
 
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        callFromResumeandCreate();
+    }
+
+    public int countFiles(Context mcoContext, String folder_name){
+        try {
+            File file =  new File(mcoContext.getFilesDir(), folder_name);
+            Log.d("System.out", "xxx: nos of files in watched_file: " + file.list().length);
+            return file.list().length;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public void callFromResumeandCreate() {
         // get topic name
         Intent intent = getIntent();
         topicName = intent.getStringExtra("topicName");
@@ -53,6 +77,21 @@ public class MediaListActivity extends AppCompatActivity {
             resourceList.add(pathMedia+files[i].getName());
         }
         Collections.sort(resourceList, String.CASE_INSENSITIVE_ORDER);
+
+        // fetch if eligible for survey
+        ArrayList<String> deleteCandidates = new ArrayList<>();
+        if (countFiles(MediaListActivity.this, topicName) != files.length-1) {
+            for (String x : resourceList) {
+                if (x.contains("txt")) {
+                    deleteCandidates.add(x);
+                }
+            }
+            for (String x : deleteCandidates) {
+                resourceList.remove(x);
+            }
+        }
+
+
         Log.d("System.out", "xxx: topic files: " + resourceList.size() + "   " + resourceList);
 
         // create recycler view for listing topics
@@ -62,7 +101,6 @@ public class MediaListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MediaListAdapter(this, resourceList);
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
 }
