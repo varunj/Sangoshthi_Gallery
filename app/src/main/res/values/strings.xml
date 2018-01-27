@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">zzSangoshthi_Gallery</string>
 
-    <string name="dropbox_path">/Android/data/com.dropbox.android/files/u713122961/scratch/Sangoshthi Team Folder/Sangoshthi_Gallery/</string>
-    <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u713122961/scratch/Sangoshthi Team Folder/Sangoshthi_Gallery/logs/access.txt/</string>
-    <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u713122961/scratch/Sangoshthi Team Folder/Sangoshthi_Gallery/logs/log_</string>
-    <string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u713122961/scratch/Sangoshthi Team Folder/Sangoshthi_Gallery/logs/</string>
+    <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/</string>
+    <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/logs/access.txt/</string>
+    <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/logs/log_</string>
+    <string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/logs/</string>
 
     <string name="register_minLen_name">1</string>
     <string name="register_len_phoneNum">10</string>
