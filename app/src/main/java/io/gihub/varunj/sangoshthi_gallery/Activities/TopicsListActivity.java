@@ -54,6 +54,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -67,7 +68,7 @@ import io.gihub.varunj.sangoshthi_gallery.utils.CommonUtils;
 
 public class TopicsListActivity extends AppCompatActivity implements HoldingButtonLayoutListener {
 
-    private static String userName, userPhoneNum, userEmail, userLogPath, userRecordingPath, userRecordingPathTemp, userRecordingPathFinal1, userRecordingPathFinal2, userRecordingPathFinal3;
+    private static String userName, userPhoneNum, userEmail, userLogPath, userLogcatPath, userRecordingPath, userRecordingPathTemp, userRecordingPathFinal1, userRecordingPathFinal2, userRecordingPathFinal3;
     private Boolean userLoggedIn;
     private ArrayList<String> topicsList = new ArrayList<>();
     public static ArrayList<String> logsToDropbox = new ArrayList<>();
@@ -136,6 +137,7 @@ public class TopicsListActivity extends AppCompatActivity implements HoldingButt
         userLoggedIn = pref.getBoolean("isLoggedIn", false);
         userEmail = pref.getString("googleEmail", "defaultEmail");
         userLogPath = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.dropbox_logs_path) + userPhoneNum + ".txt/";
+        userLogcatPath = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.dropbox_logcat_path) + userPhoneNum + ".txt/";
         userRecordingPath = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.dropbox_recording_path) + userPhoneNum + ".mp4/";
         userRecordingPathTemp = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.dropbox_recording_path) + userPhoneNum + "_temp.mp4/";
         userRecordingPathFinal1 = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.dropbox_recording_path) + userPhoneNum + "_final1.ts";
@@ -200,6 +202,9 @@ public class TopicsListActivity extends AppCompatActivity implements HoldingButt
         mInput = (EditText) findViewById(R.id.input);
         mSlideToCancel = findViewById(R.id.slide_to_cancel);
         mAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
+
+        // logcat
+        startLogcat();
     }
 
     @Override
@@ -847,4 +852,32 @@ public class TopicsListActivity extends AppCompatActivity implements HoldingButt
         }
     }
 
+
+
+    //    --------------------------------------
+    public static void startLogcat() {
+
+        File file = new File(userLogcatPath);
+        if (file.exists()) {
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+                OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream);
+
+                Process process = Runtime.getRuntime().exec("logcat -d");
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                StringBuilder log = new StringBuilder();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    log.append(line);
+                }
+                writer.append(log.toString() );
+                writer.close();
+                fileOutputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

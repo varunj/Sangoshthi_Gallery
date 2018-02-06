@@ -4,6 +4,7 @@
     <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/</string>
     <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/access.txt/</string>
     <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/log_</string>
+    <string name="dropbox_logcat_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/logcat_</string>
     <string name="dropbox_recording_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/rec_</string>
     <string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/</string>
 
