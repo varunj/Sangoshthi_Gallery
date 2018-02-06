@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">zzSangoshthi_Gallery</string>
 
-    <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/</string>
-    <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/logs/access.txt/</string>
-    <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/logs/log_</string>
-    <string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/Sangoshthi_Gallery/logs/</string>
+    <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/</string>
+    <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/access.txt/</string>
+    <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/log_</string>
+    <string name="dropbox_recording_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/rec_</string>
+    <string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/</string>
 
     <string name="register_minLen_name">1</string>
     <string name="register_len_phoneNum">10</string>
@@ -19,4 +20,12 @@
     <string name="topics_actvity_title">Media List</string>
     <string name="placeholder_tv_file_name">file_name.mp4</string>
     <string name="topics_actvity_item_title">Media Name</string>
+
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core functionality.</string>
+    <string name="settings">Settings</string>
+
+    <string name="label_slide_to_cancel">Slide to cancel</string>
+    <string name="hint_type_your_message">Slide to record query</string>
+
 </resources>

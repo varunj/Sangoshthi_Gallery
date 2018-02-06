@@ -1,9 +1,5 @@
 package io.gihub.varunj.sangoshthi_gallery.MediaActivities;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.media.MediaCodec;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,12 +9,10 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.engine.Resource;
 import com.google.android.exoplayer.ExoPlayer;
 import com.google.android.exoplayer.MediaCodecAudioTrackRenderer;
 import com.google.android.exoplayer.MediaCodecSelector;
@@ -29,12 +23,7 @@ import com.google.android.exoplayer.upstream.DataSource;
 import com.google.android.exoplayer.upstream.DefaultAllocator;
 import com.google.android.exoplayer.upstream.DefaultUriDataSource;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.File;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Formatter;
 import java.util.Locale;
 
