@@ -34,7 +34,7 @@ import io.gihub.varunj.sangoshthi_gallery.R;
  * Created by Varun Jain on 27-Sep-17.
  */
 
-public class AudioVideoActivity extends AppCompatActivity {
+public class VideoActivity extends AppCompatActivity {
 
     private static String pathh = "";
     private SurfaceView surfaceView;

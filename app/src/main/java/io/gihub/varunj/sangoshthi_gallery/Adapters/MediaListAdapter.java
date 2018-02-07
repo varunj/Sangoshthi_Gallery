@@ -2,7 +2,9 @@ package io.gihub.varunj.sangoshthi_gallery.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,17 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import io.gihub.varunj.sangoshthi_gallery.MediaActivities.ImageActivity;
-import io.gihub.varunj.sangoshthi_gallery.MediaActivities.AudioVideoActivity;
 import io.gihub.varunj.sangoshthi_gallery.MediaActivities.SurveyActivity;
+import io.gihub.varunj.sangoshthi_gallery.MediaActivities.VideoActivity;
 import io.gihub.varunj.sangoshthi_gallery.R;
 
 /**
@@ -32,6 +32,7 @@ import io.gihub.varunj.sangoshthi_gallery.R;
 public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.ViewHolder> {
     private ArrayList<String> mDataset;
     private final Context context;
+    public static String audioPath = "";
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -92,7 +93,7 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
                     // store list of read things
                     wrtieFileOnInternalStorage(context, temp_topic, temp);
 
-                    Intent intent = new Intent(context, AudioVideoActivity.class);
+                    Intent intent = new Intent(context, VideoActivity.class);
                     intent.putExtra("videoPath", mDataset.get(position));
                     context.startActivity(intent);
                 }
@@ -102,9 +103,20 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
                     // store list of read things
                     wrtieFileOnInternalStorage(context, temp_topic, temp);
 
-                    Intent intent = new Intent(context, AudioVideoActivity.class);
-                    intent.putExtra("videoPath", mDataset.get(position));
-                    context.startActivity(intent);
+                    // old video type audio implementation
+//                    Intent intent = new Intent(context, VideoActivity.class);
+//                    intent.putExtra("videoPath", mDataset.get(position));
+//                    context.startActivity(intent);
+
+                    // new audio type audio implementation
+                    Bundle bundle = new Bundle();
+                    bundle.putString("audioPath", mDataset.get(position));
+                    AudioPlaybackFragment playbackFragment = new AudioPlaybackFragment();
+                    playbackFragment.setArguments(bundle);
+                    FragmentTransaction transaction = ((FragmentActivity) context)
+                            .getSupportFragmentManager()
+                            .beginTransaction();
+                    playbackFragment.show(transaction, "dialog_playback");
                 }
 
                 if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("png")) {
