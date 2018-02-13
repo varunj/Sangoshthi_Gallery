@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="io.gihub.varunj.sangoshthi_gallery.Activities.SplashScreenActivity">
+    tools:context="io.gihub.varunj.sangoshthi_gallery.Activities.ASplashScreenActivity">
 
     <ImageView
         android:id="@+id/imageview_splashscreen"

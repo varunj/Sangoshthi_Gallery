@@ -31,7 +31,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-import io.gihub.varunj.sangoshthi_gallery.Activities.TopicsListActivity;
+import io.gihub.varunj.sangoshthi_gallery.Activities.CMainActivity;
 import io.gihub.varunj.sangoshthi_gallery.R;
 
 public class AudioPlaybackFragment extends DialogFragment {
@@ -107,12 +107,12 @@ public class AudioPlaybackFragment extends DialogFragment {
                     long seconds = TimeUnit.MILLISECONDS.toSeconds(mMediaPlayer.getCurrentPosition()) - TimeUnit.MINUTES.toSeconds(minutes);
                     mCurrentProgressTextView.setText(String.format(Locale.ENGLISH, "%02d:%02d", minutes,seconds));
 
-                    TopicsListActivity.addToLog("seek:" + mMediaPlayer.getCurrentPosition(), audioPath);
+                    CMainActivity.addToLog("seek:" + mMediaPlayer.getCurrentPosition(), audioPath);
                     updateSeekBar();
 
                 } else if (mMediaPlayer == null && fromUser) {
                     prepareMediaPlayerFromPoint(progress);
-                    TopicsListActivity.addToLog("seek:" +  mMediaPlayer.getCurrentPosition(), audioPath);
+                    CMainActivity.addToLog("seek:" +  mMediaPlayer.getCurrentPosition(), audioPath);
                     updateSeekBar();
                 }
             }
@@ -134,7 +134,7 @@ public class AudioPlaybackFragment extends DialogFragment {
                     long minutes = TimeUnit.MILLISECONDS.toMinutes(mMediaPlayer.getCurrentPosition());
                     long seconds = TimeUnit.MILLISECONDS.toSeconds(mMediaPlayer.getCurrentPosition()) - TimeUnit.MINUTES.toSeconds(minutes);
                     mCurrentProgressTextView.setText(String.format(Locale.ENGLISH, "%02d:%02d", minutes,seconds));
-                    TopicsListActivity.addToLog("seek:" + mMediaPlayer.getCurrentPosition(), audioPath);
+                    CMainActivity.addToLog("seek:" + mMediaPlayer.getCurrentPosition(), audioPath);
                     updateSeekBar();
                 }
             }
@@ -272,7 +272,7 @@ public class AudioPlaybackFragment extends DialogFragment {
             }
         });
 
-        TopicsListActivity.addToLog("play:" + mMediaPlayer.getCurrentPosition(), audioPath);
+        CMainActivity.addToLog("play:" + mMediaPlayer.getCurrentPosition(), audioPath);
         updateSeekBar();
 
         //keep screen on while playing audio
@@ -289,7 +289,7 @@ public class AudioPlaybackFragment extends DialogFragment {
             mMediaPlayer.prepare();
             mSeekBar.setMax(mMediaPlayer.getDuration());
             mMediaPlayer.seekTo(progress);
-            TopicsListActivity.addToLog("seek:" + mMediaPlayer.getCurrentPosition(), audioPath);
+            CMainActivity.addToLog("seek:" + mMediaPlayer.getCurrentPosition(), audioPath);
             mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
@@ -309,19 +309,19 @@ public class AudioPlaybackFragment extends DialogFragment {
         mPlayButton.setImageResource(R.drawable.ic_media_play);
         mHandler.removeCallbacks(mRunnable);
         mMediaPlayer.pause();
-        TopicsListActivity.addToLog("pause:" + mMediaPlayer.getCurrentPosition(), audioPath);
+        CMainActivity.addToLog("pause:" + mMediaPlayer.getCurrentPosition(), audioPath);
     }
 
     private void resumePlaying() {
         mPlayButton.setImageResource(R.drawable.ic_media_pause);
         mHandler.removeCallbacks(mRunnable);
         mMediaPlayer.start();
-        TopicsListActivity.addToLog("play:" + mMediaPlayer.getCurrentPosition(), audioPath);
+        CMainActivity.addToLog("play:" + mMediaPlayer.getCurrentPosition(), audioPath);
         updateSeekBar();
     }
 
     private void stopPlaying() {
-        TopicsListActivity.addToLog("stop:" + mMediaPlayer.getCurrentPosition(), audioPath);
+        CMainActivity.addToLog("stop:" + mMediaPlayer.getCurrentPosition(), audioPath);
         mPlayButton.setImageResource(R.drawable.ic_media_play);
         mHandler.removeCallbacks(mRunnable);
         mMediaPlayer.stop();

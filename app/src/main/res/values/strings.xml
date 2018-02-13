@@ -29,4 +29,15 @@
     <string name="label_slide_to_cancel">Slide to cancel</string>
     <string name="hint_type_your_message">Slide to record query</string>
 
+
+    <string name="record_startrecording">Start Recording</string>
+    <string name="record_endrecording">End Recording</string>
+
+    <string name="record_play_recording">Play Recording</string>
+    <string name="record_pause_recording">Stop Recording</string>
+
+    <string name="record_discard_recording">Discard Recording</string>
+
+    <string name="record_submit">Submit</string>
+
 </resources>

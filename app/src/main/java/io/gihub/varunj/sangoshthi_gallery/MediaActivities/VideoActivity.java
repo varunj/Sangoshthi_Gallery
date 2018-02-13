@@ -27,7 +27,7 @@ import java.io.File;
 import java.util.Formatter;
 import java.util.Locale;
 
-import io.gihub.varunj.sangoshthi_gallery.Activities.TopicsListActivity;
+import io.gihub.varunj.sangoshthi_gallery.Activities.CMainActivity;
 import io.gihub.varunj.sangoshthi_gallery.R;
 
 /**
@@ -80,7 +80,7 @@ public class VideoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        TopicsListActivity.addToLog("close", pathh);
+        CMainActivity.addToLog("close", pathh);
         exoPlayer.stop();
         finish();
     }
@@ -114,7 +114,7 @@ public class VideoActivity extends AppCompatActivity {
                     return;
                 }
                 exoPlayer.seekTo(progress*1000);
-                TopicsListActivity.addToLog("seek:" + exoPlayer.getCurrentPosition(), pathh);
+                CMainActivity.addToLog("seek:" + exoPlayer.getCurrentPosition(), pathh);
             }
 
             @Override
@@ -141,7 +141,7 @@ public class VideoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 exoPlayer.seekTo(exoPlayer.getCurrentPosition()-3000);
-                TopicsListActivity.addToLog("seek:" + exoPlayer.getCurrentPosition(), pathh);
+                CMainActivity.addToLog("seek:" + exoPlayer.getCurrentPosition(), pathh);
             }
         });
     }
@@ -156,14 +156,14 @@ public class VideoActivity extends AppCompatActivity {
                     exoPlayer.setPlayWhenReady(false);
                     bIsPlaying=false;
                     btnPlay.setImageResource(android.R.drawable.ic_media_play);
-                    TopicsListActivity.addToLog("pause:" + exoPlayer.getCurrentPosition(), pathh);
+                    CMainActivity.addToLog("pause:" + exoPlayer.getCurrentPosition(), pathh);
                 }
                 else {
                     exoPlayer.setPlayWhenReady(true);
                     bIsPlaying=true;
                     btnPlay.setImageResource(android.R.drawable.ic_media_pause);
                     setProgress();
-                    TopicsListActivity.addToLog("play:" + exoPlayer.getCurrentPosition(), pathh);
+                    CMainActivity.addToLog("play:" + exoPlayer.getCurrentPosition(), pathh);
                 }
             }
         });
@@ -176,7 +176,7 @@ public class VideoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 exoPlayer.seekTo(exoPlayer.getCurrentPosition()+3000);
-                TopicsListActivity.addToLog("seek:" + exoPlayer.getCurrentPosition(), pathh);
+                CMainActivity.addToLog("seek:" + exoPlayer.getCurrentPosition(), pathh);
             }
         });
     }

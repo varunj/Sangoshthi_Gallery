@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="io.github.varunj.sangoshthi_gallery.Activities.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_picker_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="VIEW CONTENT"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:background="@color/home_button1"
+            android:drawableLeft="@drawable/picker_content"
+            android:layout_weight="1.0"
+            android:paddingLeft="15dp"/>
+
+        <Button
+            android:id="@+id/btn_picker_query"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="RECORD QUERY"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:background="@color/home_button2"
+            android:drawableLeft="@drawable/picker_query"
+            android:layout_weight="1.0"
+            android:paddingLeft="15dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

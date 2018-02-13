@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +11,6 @@ import android.util.Log;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -24,7 +21,7 @@ import io.gihub.varunj.sangoshthi_gallery.R;
  * Created by Varun Jain on 27-Sep-17.
  */
 
-public class MediaListActivity extends AppCompatActivity {
+public class FMediaListActivity extends AppCompatActivity {
 
     private String topicName;
     private ArrayList<String> resourceList = new ArrayList<>();
@@ -80,7 +77,7 @@ public class MediaListActivity extends AppCompatActivity {
 
         // fetch if eligible for survey
         ArrayList<String> deleteCandidates = new ArrayList<>();
-        if (countFiles(MediaListActivity.this, topicName) != files.length-1) {
+        if (countFiles(FMediaListActivity.this, topicName) != files.length-1) {
             for (String x : resourceList) {
                 if (x.contains("txt")) {
                     deleteCandidates.add(x);

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,15 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-import io.gihub.varunj.sangoshthi_gallery.Activities.MediaListActivity;
+import io.gihub.varunj.sangoshthi_gallery.Activities.FMediaListActivity;
 import io.gihub.varunj.sangoshthi_gallery.R;
 
 /**
@@ -81,7 +74,7 @@ public class TopicsListAdapter extends RecyclerView.Adapter<TopicsListAdapter.Vi
         holder.cv_topics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MediaListActivity.class);
+                Intent intent = new Intent(context, FMediaListActivity.class);
                 intent.putExtra("topicName", mDataset.get(position));
                 context.startActivity(intent);
             }

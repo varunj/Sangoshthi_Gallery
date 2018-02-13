@@ -7,7 +7,6 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.BoringLayout;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,7 +29,7 @@ import io.gihub.varunj.sangoshthi_gallery.R;
  * Created by Varun on 04-03-2017.
  */
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
+public class BLoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 9001;
     private GoogleApiClient mGoogleApiClient;
     EditText editTextName, editTextPhone;
@@ -40,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if(prefs.getBoolean("isLoggedIn", false)) {
-            Intent intent = new Intent(this, TopicsListActivity.class);
+            Intent intent = new Intent(this, CMainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -90,10 +89,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             br.close();
         }
         catch (IOException e) {
-            Toast.makeText(LoginActivity.this, getString(R.string.toast_unauth_phoneNum), Toast.LENGTH_LONG).show();
+            Toast.makeText(BLoginActivity.this, getString(R.string.toast_unauth_phoneNum), Toast.LENGTH_LONG).show();
         }
         if (flag == 0) {
-            Toast.makeText(LoginActivity.this, getString(R.string.toast_unauth_phoneNum), Toast.LENGTH_LONG).show();
+            Toast.makeText(BLoginActivity.this, getString(R.string.toast_unauth_phoneNum), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -116,16 +115,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 editor.putString("phoneNum", editTextPhone.getText().toString());
                 editor.putBoolean("isLoggedIn" , true);
                 editor.commit();
-                Intent intent = new Intent(this, TopicsListActivity.class);
+                Intent intent = new Intent(this, CMainActivity.class);
                 startActivity(intent);
                 finish();
             }
             else {
-                Toast.makeText(LoginActivity.this, getString(R.string.toast_wrong_phoneNum), Toast.LENGTH_LONG).show();
+                Toast.makeText(BLoginActivity.this, getString(R.string.toast_wrong_phoneNum), Toast.LENGTH_LONG).show();
             }
         }
         else {
-            Toast.makeText(LoginActivity.this, getString(R.string.toast_wrong_name), Toast.LENGTH_LONG).show();
+            Toast.makeText(BLoginActivity.this, getString(R.string.toast_wrong_name), Toast.LENGTH_LONG).show();
         }
 
         // Signed in successfully.
@@ -140,16 +139,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     editor.putBoolean("isLoggedIn" , true);
                     editor.putString("googleEmail", acct.getEmail());
                     editor.commit();
-                    Intent intent = new Intent(this, TopicsListActivity.class);
+                    Intent intent = new Intent(this, CMainActivity.class);
                     startActivity(intent);
                     finish();
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, getString(R.string.toast_wrong_phoneNum), Toast.LENGTH_LONG).show();
+                    Toast.makeText(BLoginActivity.this, getString(R.string.toast_wrong_phoneNum), Toast.LENGTH_LONG).show();
                 }
             }
             else {
-                Toast.makeText(LoginActivity.this, getString(R.string.toast_wrong_name), Toast.LENGTH_LONG).show();
+                Toast.makeText(BLoginActivity.this, getString(R.string.toast_wrong_name), Toast.LENGTH_LONG).show();
             }
         } else {
             Toast.makeText(this, "Unauthorized", Toast.LENGTH_SHORT).show();

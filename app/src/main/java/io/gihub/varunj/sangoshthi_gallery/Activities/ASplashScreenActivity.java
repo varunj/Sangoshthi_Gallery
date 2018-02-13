@@ -1,6 +1,5 @@
 package io.gihub.varunj.sangoshthi_gallery.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +11,7 @@ import io.gihub.varunj.sangoshthi_gallery.R;
  * Created by Varun Jain on 27-Sep-17.
  */
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class ASplashScreenActivity extends AppCompatActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 500;
 
@@ -25,9 +24,9 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashScreenActivity.this ,LoginActivity.class);
-                SplashScreenActivity.this.startActivity(mainIntent);
-                SplashScreenActivity.this.finish();
+                Intent mainIntent = new Intent(ASplashScreenActivity.this ,BLoginActivity.class);
+                ASplashScreenActivity.this.startActivity(mainIntent);
+                ASplashScreenActivity.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
     }

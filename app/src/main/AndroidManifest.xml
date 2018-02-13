@@ -15,19 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.SplashScreenActivity" android:screenOrientation="portrait">
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.ASplashScreenActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.LoginActivity" android:screenOrientation="portrait"/>
-        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.TopicsListActivity" android:screenOrientation="portrait"/>
-        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.MediaListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.CMainActivity" android:screenOrientation="portrait"/>
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.BLoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.DTopicsListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.ERecordActivity" android:screenOrientation="portrait"/>
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.Activities.FMediaListActivity" android:screenOrientation="portrait"/>
         <activity android:name="io.gihub.varunj.sangoshthi_gallery.MediaActivities.VideoActivity" android:screenOrientation="landscape"/>
         <activity android:name="io.gihub.varunj.sangoshthi_gallery.MediaActivities.ImageActivity"/>
-        <activity android:name="io.gihub.varunj.sangoshthi_gallery.MediaActivities.SurveyActivity"/>
+        <activity android:name="io.gihub.varunj.sangoshthi_gallery.MediaActivities.SurveyActivity" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

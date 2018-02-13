@@ -12,4 +12,8 @@
     <color name="colorBlack">#000000</color>
 
     <color name="play_button">#F44336</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="home_button1">#ff99cc00</color>
+    <color name="home_button2">#ff33b5e5</color>
 </resources>

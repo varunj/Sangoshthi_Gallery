@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import io.gihub.varunj.sangoshthi_gallery.Activities.TopicsListActivity;
+import io.gihub.varunj.sangoshthi_gallery.Activities.CMainActivity;
 import io.gihub.varunj.sangoshthi_gallery.R;
 
 /**
@@ -28,7 +28,7 @@ public class ImageActivity extends AppCompatActivity {
             Bitmap bmImg = BitmapFactory.decodeFile(pathh);
             ImageView iv = (ImageView) findViewById(R.id.imageview_full);
             iv.setImageBitmap(bmImg);
-            TopicsListActivity.addToLog("open", pathh);
+            CMainActivity.addToLog("open", pathh);
         }
         catch (Exception e) {
             Toast.makeText(this, "Invalid Path", Toast.LENGTH_LONG).show();
@@ -37,7 +37,7 @@ public class ImageActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        TopicsListActivity.addToLog("close", pathh);
+        CMainActivity.addToLog("close", pathh);
         super.onBackPressed();
     }
 }

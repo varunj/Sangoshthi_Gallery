@@ -1,30 +1,15 @@
 package io.gihub.varunj.sangoshthi_gallery.MediaActivities;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.SeekBar;
-import android.widget.TextView;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-
-import io.gihub.varunj.sangoshthi_gallery.Activities.TopicsListActivity;
-import io.gihub.varunj.sangoshthi_gallery.Adapters.MediaListAdapter;
-import io.gihub.varunj.sangoshthi_gallery.R;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import io.gihub.varunj.sangoshthi_gallery.Activities.CMainActivity;
+import io.gihub.varunj.sangoshthi_gallery.R;
 
 /**
  * Created by Varun Jain on 27-Sep-17.
@@ -53,7 +38,7 @@ public class SurveyActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         String ans = seeekBar1.getProgress() + ":" + seeekBar2.getProgress() + ":" + seeekBar3.getProgress() + ":" + seeekBar4.getProgress();
-        TopicsListActivity.logsToDropbox.add(new SimpleDateFormat("dd/MM/yyyy kk:mm:ss").format(new Date()) + "," + pathh + "," + ans + "\n");
+        CMainActivity.logsToDropbox.add(new SimpleDateFormat("dd/MM/yyyy kk:mm:ss").format(new Date()) + "," + pathh + "," + ans + "\n");
         super.onBackPressed();
     }
 }

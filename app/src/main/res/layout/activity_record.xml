@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="io.gihub.varunj.sangoshthi_gallery.Activities.ERecordActivity">
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_record_record"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="@string/record_startrecording"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:background="@color/picker_add_story"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/btn_record_delete"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="@string/record_discard_recording"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:background="@color/play_button"
+            android:layout_margin="10dp"/>
+
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_record_play"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/record_play_recording"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/btn_record_submit"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/record_submit"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="10dp"/>
+
+</LinearLayout>

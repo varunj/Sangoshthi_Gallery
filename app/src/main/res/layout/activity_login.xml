@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="16dip"
-    tools:context="io.gihub.varunj.sangoshthi_gallery.Activities.LoginActivity">
+    tools:context="io.gihub.varunj.sangoshthi_gallery.Activities.BLoginActivity">
 
     <EditText
         android:layout_width="match_parent"
