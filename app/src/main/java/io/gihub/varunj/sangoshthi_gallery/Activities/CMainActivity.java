@@ -2,6 +2,9 @@ package io.gihub.varunj.sangoshthi_gallery.Activities;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -44,13 +47,15 @@ import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import io.gihub.varunj.sangoshthi_gallery.R;
 
 public class CMainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static String userName, userPhoneNum, userEmail, userLogPath;
+    public static String userName, userPhoneNum, userEmail, userLogPath, userLogcatPath;
     private Boolean userLoggedIn;
 
     // constant for storing the runtime permission access for external storage media
@@ -96,6 +101,8 @@ public class CMainActivity extends AppCompatActivity implements View.OnClickList
     //    Time when the location was updated represented as a String.
     private String mLastUpdateTime;
 
+    private static UsageStatsManager mUsageStatsManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,11 +115,11 @@ public class CMainActivity extends AppCompatActivity implements View.OnClickList
         userLoggedIn = pref.getBoolean("isLoggedIn", false);
         userEmail = pref.getString("googleEmail", "defaultEmail");
         userLogPath = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.dropbox_logs_path) + userPhoneNum + ".txt/";
+        userLogcatPath = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.dropbox_logcat_path) + userPhoneNum + ".txt/";
 
         // log
         CMainActivity.addToLog("app_open", "");
         Log.d("System.out", "xxx: user creden: " + userName + "   " + userPhoneNum + "   " + userEmail + "   " + userLoggedIn);
-
 
         /* First check for permission for external storage, Uses runtime permission */
         checkAndGetRuntimePermissions();
@@ -136,6 +143,9 @@ public class CMainActivity extends AppCompatActivity implements View.OnClickList
         buildLocationSettingsRequest();
         startLocationUpdates();         // xxx: needed???
 
+        // app use stats
+        mUsageStatsManager = (UsageStatsManager) this.getSystemService(Context.USAGE_STATS_SERVICE);
+        appUseStats();
     }
 
     @Override
@@ -159,6 +169,21 @@ public class CMainActivity extends AppCompatActivity implements View.OnClickList
         transferToDropbox();
         logsToDropbox.clear();
         super.onBackPressed();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_picker_content:
+                Intent intentCreateStory = new Intent(this, DTopicsListActivity.class);
+                startActivity(intentCreateStory);
+                break;
+
+            case R.id.btn_picker_query:
+                Intent intentTrimVideos = new Intent(this, ERecordActivity.class);
+                startActivity(intentTrimVideos);
+                break;
+        }
     }
 
     //    --------------------------------------DROPBOX
@@ -188,23 +213,6 @@ public class CMainActivity extends AppCompatActivity implements View.OnClickList
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_picker_content:
-                Intent intentCreateStory = new Intent(this, DTopicsListActivity.class);
-                startActivity(intentCreateStory);
-                break;
-
-            case R.id.btn_picker_query:
-                Intent intentTrimVideos = new Intent(this, ERecordActivity.class);
-                startActivity(intentTrimVideos);
-                break;
         }
     }
 
@@ -543,4 +551,40 @@ public class CMainActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+
+    //    -------------------------------------- APP USAGE STATS
+    public void appUseStats() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -1);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            // The first argument of the queryUsageStats() is used for the time interval by which the stats are aggregated.
+            // The second and the third arguments are used for specifying the beginning and the end of the range of the stats to include in the results.
+
+            List<UsageStats> queryUsageStats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_YEARLY, cal.getTimeInMillis(), System.currentTimeMillis());
+            if (queryUsageStats.size() == 0) {
+                Toast.makeText(this, "The user may not allow the access to apps usage.", Toast.LENGTH_LONG).show();
+            }
+
+            File file = new File(userLogcatPath);
+            if (file.exists()) {
+                try {
+                    FileOutputStream fileOutputStream = new FileOutputStream(file);
+                    OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream);
+                    StringBuilder log = new StringBuilder();
+                    for (UsageStats x : queryUsageStats) {
+                        log.append(x.getPackageName() + ":" + x.getTotalTimeInForeground() + "\n");
+                    }
+                    writer.write(log.toString());
+                    writer.close();
+                    fileOutputStream.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        }
+    }
 }
