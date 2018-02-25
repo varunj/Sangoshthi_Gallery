@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
@@ -23,9 +26,12 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
 
     private static final String TAG = ERecordActivity.class.getSimpleName();
     private Button btn_record_record, btn_record_play, btn_record_submit, btn_record_delete;
-    private static String userRecordingPath, userRecordingPathTemp, userRecordingPathFinal1, userRecordingPathFinal2, userRecordingPathFinal3;
+    private TextView text_timer;
+    private static String userRecordingPath, userRecordingPathTemp, userRecordingPathFinal1, userRecordingPathFinal2, userRecordingPathFinal3, lenRecording = "0";
     private long mStartTime;
     private MediaRecorder mediaRecorder;
+    private Handler mHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,7 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
         btn_record_play = (Button) findViewById(R.id.btn_record_play);
         btn_record_submit = (Button) findViewById(R.id.btn_record_submit);
         btn_record_delete = (Button) findViewById(R.id.btn_record_delete);
+        text_timer = (TextView) findViewById(R.id.text_timer);
 
         btn_record_record.setOnClickListener(this);
         btn_record_delete.setOnClickListener(this);
@@ -52,7 +59,16 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
         btn_record_play.setVisibility(View.GONE);
         btn_record_submit.setVisibility(View.GONE);
 
+        mHandler = new Handler();
+
     }
+
+    private Runnable timerTask = new Runnable() {
+        public void run() {
+            text_timer.setText(getFormattedTime());
+            mHandler.postDelayed(timerTask, 500); // delay 1/2 second
+        }
+    };
 
     @Override
     public void onClick(View view) {
@@ -62,20 +78,33 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
                     startAudioRecording(userRecordingPathTemp);
                     mStartTime = System.currentTimeMillis();
                     btn_record_record.setText(R.string.record_endrecording);
+                    btn_record_record.setBackgroundColor(ContextCompat.getColor(this, R.color.play_button));
+
+                    // start timer
+                    try {
+                        mHandler.removeCallbacks(timerTask);
+                        mHandler.postDelayed(timerTask, 500); // delay 1/2 second
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 else {
                     stopAudioRecording();
+                    lenRecording = getFormattedTime();
                     btn_record_record.setVisibility(View.GONE);
                     btn_record_delete.setVisibility(View.VISIBLE);
                     btn_record_play.setVisibility(View.VISIBLE);
                     btn_record_submit.setVisibility(View.VISIBLE);
+
+                    // stop timer
+                    mHandler.removeCallbacks(timerTask);
                 }
                 break;
 
             case R.id.btn_record_delete:
                 try {
                     stopAudioRecordingAndDelete(userRecordingPathTemp);
-                    Toast.makeText(this, "Recording canceled! " + getFormattedTime() + " s", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Recording canceled! " + lenRecording, Toast.LENGTH_SHORT).show();
                     Intent intentTrimVideos = new Intent(this, ERecordActivity.class);
                     startActivity(intentTrimVideos);
                     ERecordActivity.this.finish();
@@ -93,6 +122,7 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
 
                         File audioFile = new File(userRecordingPathTemp);
                         if (audioFile.exists() && audioFile.isFile()) {
+                            System.out.println("xxx: " + userRecordingPathTemp);
                             CommonUtils.getInstance().startAudioPlaying(userRecordingPathTemp);
                             btn_record_play.setText(R.string.record_pause_recording);
                         } else {
@@ -112,8 +142,7 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.btn_record_submit:
                 try {
-                    String lenRecording = getFormattedTime();
-                    Toast.makeText(this, "Recording submitted! " + lenRecording + " s", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Recording submitted! " + lenRecording, Toast.LENGTH_SHORT).show();
                     joinTwoRecordings(userRecordingPathTemp, userRecordingPath);
                     Toast.makeText(this, "Stitched!", Toast.LENGTH_SHORT).show();
                     CMainActivity.addToLog("record:" + lenRecording, "");

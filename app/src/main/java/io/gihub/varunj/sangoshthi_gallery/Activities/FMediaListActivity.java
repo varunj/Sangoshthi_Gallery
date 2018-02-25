@@ -70,34 +70,39 @@ public class FMediaListActivity extends AppCompatActivity {
         String pathMedia = Environment.getExternalStorageDirectory().getAbsolutePath() +  getString(R.string.dropbox_path) + topicName + "/";
         File directoryMedia = new File(pathMedia);
         File[] files = directoryMedia.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            resourceList.add(pathMedia+files[i].getName());
-        }
-        Collections.sort(resourceList, String.CASE_INSENSITIVE_ORDER);
+        try {
+            for (int i = 0; i < files.length; i++) {
+                resourceList.add(pathMedia+files[i].getName());
+            }
+            Collections.sort(resourceList, String.CASE_INSENSITIVE_ORDER);
 
-        // fetch if eligible for survey
-        ArrayList<String> deleteCandidates = new ArrayList<>();
-        if (countFiles(FMediaListActivity.this, topicName) != files.length-1) {
-            for (String x : resourceList) {
-                if (x.contains("txt")) {
-                    deleteCandidates.add(x);
+            // fetch if eligible for survey
+            ArrayList<String> deleteCandidates = new ArrayList<>();
+            if (countFiles(FMediaListActivity.this, topicName) != files.length-1) {
+                for (String x : resourceList) {
+                    if (x.contains("txt")) {
+                        deleteCandidates.add(x);
+                    }
+                }
+                for (String x : deleteCandidates) {
+                    resourceList.remove(x);
                 }
             }
-            for (String x : deleteCandidates) {
-                resourceList.remove(x);
-            }
+
+
+            Log.d("System.out", "xxx: topic files: " + resourceList.size() + "   " + resourceList);
+
+            // create recycler view for listing topics
+            mRecyclerView = (RecyclerView) findViewById(R.id.rv_media);
+            mRecyclerView.setHasFixedSize(true);
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+            mAdapter = new MediaListAdapter(this, resourceList);
+            mRecyclerView.setAdapter(mAdapter);
         }
-
-
-        Log.d("System.out", "xxx: topic files: " + resourceList.size() + "   " + resourceList);
-
-        // create recycler view for listing topics
-        mRecyclerView = (RecyclerView) findViewById(R.id.rv_media);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MediaListAdapter(this, resourceList);
-        mRecyclerView.setAdapter(mAdapter);
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

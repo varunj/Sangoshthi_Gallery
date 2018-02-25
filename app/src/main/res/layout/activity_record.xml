@@ -1,62 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context="io.gihub.varunj.sangoshthi_gallery.Activities.ERecordActivity">
 
 
+    <View android:id="@+id/fakeView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"/>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <TextView
+        android:id="@+id/text_timer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="30sp"
+        android:layout_above="@id/fakeView"
+        android:paddingLeft="15dp"
+        android:text="@string/record_timer"
+        android:textColor="@color/colorGrey"
+        android:textStyle="bold"
+        android:background="@color/colorWhite"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:textAlignment="center"/>
 
-        <Button
-            android:id="@+id/btn_record_record"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="@string/record_startrecording"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:background="@color/picker_add_story"
-            android:layout_margin="10dp"/>
+    <Button
+        android:id="@+id/btn_record_record"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="30sp"
+        android:layout_below="@id/fakeView"
+        android:paddingLeft="15dp"
+        android:text="@string/record_startrecording"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:background="@color/picker_add_story"
+        android:drawableLeft="@drawable/picker_query"/>
 
-        <Button
-            android:id="@+id/btn_record_delete"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="@string/record_discard_recording"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:background="@color/play_button"
-            android:layout_margin="10dp"/>
-
-        </LinearLayout>
 
     <Button
         android:id="@+id/btn_record_play"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="30sp"
+        android:layout_above="@id/fakeView"
+        android:paddingLeft="15dp"
         android:text="@string/record_play_recording"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        android:background="@color/colorPrimaryDark"
-        android:layout_margin="10dp"/>
+        android:background="@color/home_button2"
+        android:drawableLeft="@drawable/btn_play_blk"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:orientation="horizontal"
+        android:layout_below="@id/fakeView">
+
+    <Button
+        android:id="@+id/btn_record_delete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/record_discard_recording"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="@color/play_button"
+        android:layout_weight="1.0"
+        android:paddingTop="25dp"
+        android:drawableTop="@drawable/trash"/>
 
     <Button
         android:id="@+id/btn_record_submit"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="@string/record_submit"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        android:background="@color/colorPrimaryDark"
-        android:layout_margin="10dp"/>
+        android:textSize="30sp"
+        android:background="@color/picker_add_story"
+        android:layout_weight="1.0"
+        android:paddingTop="25dp"
+        android:drawableTop="@drawable/check"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout >

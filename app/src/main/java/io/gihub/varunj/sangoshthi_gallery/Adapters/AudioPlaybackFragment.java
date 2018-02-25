@@ -69,6 +69,7 @@ public class AudioPlaybackFragment extends DialogFragment {
             minutes = TimeUnit.MILLISECONDS.toMinutes(itemDuration);
             seconds = TimeUnit.MILLISECONDS.toSeconds(itemDuration)
                     - TimeUnit.MINUTES.toSeconds(minutes);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -183,6 +184,10 @@ public class AudioPlaybackFragment extends DialogFragment {
         alertDialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
         alertDialog.getButton(Dialog.BUTTON_NEGATIVE).setEnabled(false);
         alertDialog.getButton(Dialog.BUTTON_NEUTRAL).setEnabled(false);
+
+        // play audio as soon as load
+        startPlaying();
+        isPlaying = true;
     }
 
     @Override
