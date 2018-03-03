@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">zzSangoshthi_Gallery</string>
-
+    <string name="app_name">संगोष्ठि</string>
+    <string name="view_content">विषय सूची</string>
+    <string name="record_query">सवाल\nजमा करें</string>
     <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/</string>
     <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/access.txt/</string>
     <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/log_</string>
@@ -11,12 +12,12 @@
     <string name="register_minLen_name">1</string>
     <string name="register_len_phoneNum">10</string>
 
-    <string name="toast_wrong_name">Enter Name</string>
-    <string name="toast_wrong_phoneNum">Enter Your 10 Digit Phone Number</string>
-    <string name="toast_unauth_phoneNum">Phone Number not Authorised</string>
+    <string name="toast_wrong_name">अपना नाम डालें</string>
+    <string name="toast_wrong_phoneNum">अपना फ़ोन नंबर डालें</string>
+    <string name="toast_unauth_phoneNum">फ़ोन नंबर रजिस्टर नहीं हैं</string>
     <string name="toast_access_file">Check Dropbox Access File</string>
 
-    <string name="splash_screen">Sangoshthi: Spreading Awareness</string>
+    <string name="splash_screen">संगोष्ठि: विद्यावाली</string>
     <string name="topics_gallery_home_title">Sangoshthi Gallery</string>
     <string name="topics_actvity_title">Media List</string>
     <string name="placeholder_tv_file_name">file_name.mp4</string>
@@ -31,14 +32,14 @@
 
 
     <string name="record_timer">0:0</string>
-    <string name="record_startrecording">Start \n Recording</string>
-    <string name="record_endrecording">End Recording</string>
+    <string name="record_startrecording">रिकॉर्डिंग शुरू करें</string>
+    <string name="record_endrecording">रिकॉर्डिंग ख़त्म करें</string>
 
-    <string name="record_play_recording">Play Recording</string>
-    <string name="record_pause_recording">Stop Recording</string>
+    <string name="record_play_recording">रिकॉर्डिंग चलाएँ</string>
+    <string name="record_pause_recording">रिकॉर्डिंग रोके</string>
 
-    <string name="record_discard_recording">Discard</string>
+    <string name="record_discard_recording">हटायें</string>
 
-    <string name="record_submit">Submit</string>
+    <string name="record_submit">जमा करें</string>
 
 </resources>

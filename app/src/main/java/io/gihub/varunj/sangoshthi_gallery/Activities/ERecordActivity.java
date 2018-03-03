@@ -104,7 +104,7 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_record_delete:
                 try {
                     stopAudioRecordingAndDelete(userRecordingPathTemp);
-                    Toast.makeText(this, "Recording canceled! " + lenRecording, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "रिकॉर्डिंग हट गई! " + lenRecording, Toast.LENGTH_SHORT).show();
                     Intent intentTrimVideos = new Intent(this, ERecordActivity.class);
                     startActivity(intentTrimVideos);
                     ERecordActivity.this.finish();
@@ -142,7 +142,7 @@ public class ERecordActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.btn_record_submit:
                 try {
-                    Toast.makeText(this, "Recording submitted! " + lenRecording, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "रिकॉर्डिंग जमा हो गई! " + lenRecording, Toast.LENGTH_SHORT).show();
                     joinTwoRecordings(userRecordingPathTemp, userRecordingPath);
                     Toast.makeText(this, "Stitched!", Toast.LENGTH_SHORT).show();
                     CMainActivity.addToLog("record:" + lenRecording, "");
