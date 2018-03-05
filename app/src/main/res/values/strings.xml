@@ -9,15 +9,16 @@
     <!--<string name="dropbox_recording_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/rec_</string>-->
     <!--<string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/</string>-->
 
-    <string name="dropbox_path">/Android/DropsyncFiles/</string>
-    <string name="dropbox_access_path">/Android/DropsyncFiles/logs/access.txt/</string>
-    <string name="dropbox_logs_path">/Android/DropsyncFiles/logs/log_</string>
-    <string name="dropbox_logcat_path">//Android/DropsyncFiles/logs/logcat_</string>
-    <string name="dropbox_recording_path">/Android/DropsyncFiles/logs/rec_</string>
-    <string name="dropbox_icons_path">/Android/DropsyncFiles/logs/</string>
+    <string name="dropbox_path">/DropsyncFiles/</string>
+    <string name="dropbox_access_path">/DropsyncFiles/logs/access.txt/</string>
+    <string name="dropbox_logs_path">/DropsyncFiles/logs/log_</string>
+    <string name="dropbox_logcat_path">/DropsyncFiles/logs/logcat_</string>
+    <string name="dropbox_recording_path">/DropsyncFiles/logs/rec_</string>
+    <string name="dropbox_icons_path">/DropsyncFiles/logs/</string>
 
 
     <string name="register_minLen_name">1</string>
+
     <string name="register_len_phoneNum">10</string>
 
     <string name="enter_name">अपना नाम डालें</string>
