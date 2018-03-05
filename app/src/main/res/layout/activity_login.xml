@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/name"
         android:layout_marginTop="48dp"
-        android:hint="Enter Name"
+        android:hint="@string/enter_name"
         android:layout_below="@+id/register_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="USER REGISTRATION"
+        android:text="@string/user_registration"
         android:id="@+id/register_text"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
@@ -36,7 +36,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
-        android:hint="Enter PhoneNo" />
+        android:hint="@string/enter_phoneno" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

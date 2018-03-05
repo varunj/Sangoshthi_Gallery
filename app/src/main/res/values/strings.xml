@@ -2,16 +2,27 @@
     <string name="app_name">संगोष्ठि</string>
     <string name="view_content">विषय सूची</string>
     <string name="record_query">सवाल\nजमा करें</string>
-    <string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/</string>
-    <string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/access.txt/</string>
-    <string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/log_</string>
-    <string name="dropbox_logcat_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/logcat_</string>
-    <string name="dropbox_recording_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/rec_</string>
-    <string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/</string>
+    <!--<string name="dropbox_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/</string>-->
+    <!--<string name="dropbox_access_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/access.txt/</string>-->
+    <!--<string name="dropbox_logs_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/log_</string>-->
+    <!--<string name="dropbox_logcat_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/logcat_</string>-->
+    <!--<string name="dropbox_recording_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/rec_</string>-->
+    <!--<string name="dropbox_icons_path">/Android/data/com.dropbox.android/files/u704278258/scratch/Grit Lab Team Folder/sangoshthi_gallery/logs/</string>-->
+
+    <string name="dropbox_path">/Android/DropsyncFiles/</string>
+    <string name="dropbox_access_path">/Android/DropsyncFiles/logs/access.txt/</string>
+    <string name="dropbox_logs_path">/Android/DropsyncFiles/logs/log_</string>
+    <string name="dropbox_logcat_path">//Android/DropsyncFiles/logs/logcat_</string>
+    <string name="dropbox_recording_path">/Android/DropsyncFiles/logs/rec_</string>
+    <string name="dropbox_icons_path">/Android/DropsyncFiles/logs/</string>
+
 
     <string name="register_minLen_name">1</string>
     <string name="register_len_phoneNum">10</string>
 
+    <string name="enter_name">अपना नाम डालें</string>
+    <string name="user_registration">आशा रजिस्ट्रेशन</string>
+    <string name="enter_phoneno">अपना फ़ोन नंबर डालें</string>
     <string name="toast_wrong_name">अपना नाम डालें</string>
     <string name="toast_wrong_phoneNum">अपना फ़ोन नंबर डालें</string>
     <string name="toast_unauth_phoneNum">फ़ोन नंबर रजिस्टर नहीं हैं</string>
