@@ -68,8 +68,10 @@ public class FMediaListActivity extends AppCompatActivity {
         // fetch list of media related to topic
         resourceList.clear();
         String pathMedia = Environment.getExternalStorageDirectory().getAbsolutePath() +  getString(R.string.dropbox_path) + topicName + "/";
+
         File directoryMedia = new File(pathMedia);
         File[] files = directoryMedia.listFiles();
+
         try {
             for (int i = 0; i < files.length; i++) {
                 resourceList.add(pathMedia+files[i].getName());

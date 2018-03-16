@@ -74,15 +74,29 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
         String[] splitt = mDataset.get(position).split("/");
         final String temp = splitt[splitt.length-1];
         final String temp_topic = splitt[splitt.length-2];
-        holder.tv_media.setText(temp.substring(0, temp.length()-4));
+//        holder.tv_media.setText(temp.substring(0, temp.length()-4));
+        holder.tv_media.setText(temp.substring(3, temp.length()-9));
 
         // set media icon
+//        if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp4"))
+//            holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_video));
+//        if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp3"))
+//            holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_music));
+//        if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("png"))
+//            holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_image));
+
         if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp4"))
             holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_video));
-        if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp3"))
-            holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_music));
+        if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("mp3")) {
+            if (mDataset.get(position).substring(mDataset.get(position).length()-8).contains("asha"))
+                holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_asha));
+            else
+                holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_doctor));
+        }
         if (mDataset.get(position).substring(mDataset.get(position).length()-3).equals("png"))
             holder.iv_media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_image));
+
+
 
         // set click listener
         holder.cv_media.setOnClickListener(new View.OnClickListener() {
